@@ -3,10 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:tickleMoa2"
+        xmlns:local="clr-namespace:tickleMoa"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="500
+ ">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="71*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBox" Grid.Column="1" Header="GroupBox" HorizontalAlignment="Left" Height="457" Margin="10,10,0,0" VerticalAlignment="Top" Width="122">
+            <StackPanel HorizontalAlignment="Left" Height="208" Margin="0,10,-2,0" VerticalAlignment="Top" Width="112">
+                <Label x:Name="label" Content="사용 내역" RenderTransformOrigin="0.527,-0.712"/>
+                <TextBox x:Name="inputUsage" Height="22" TextWrapping="Wrap" Text=""/>
+                <Label x:Name="label1" Content="금액"/>
+                <TextBox x:Name="inputMoney" Height="24" TextWrapping="Wrap" Text=""/>
+
+                <Border BorderThickness="1" Height="10"/>
+                <RadioButton x:Name="radioInput" Content="입금" IsChecked="True"/>
+                <RadioButton x:Name="radioOutput" Content="출금"/>
+                <Border BorderThickness="1" Height="10"/>
+                <Button x:Name="buttonSubmit" Click="On_Submit_Btn_Clk" Content="입력"/>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid x:Name="gridUsage" HorizontalAlignment= "Left" Height="550" Margin="10,10,0,0" VerticalAlignment="Top" Width="330">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="사용 내역" Binding="{Binding Usage}" Width="70" />
+                <DataGridTextColumn Header="금액" Binding="{Binding Money}" Width="100"/>
+                <DataGridTextColumn Header="날짜" Binding="{Binding UseDate}" Width="380"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
