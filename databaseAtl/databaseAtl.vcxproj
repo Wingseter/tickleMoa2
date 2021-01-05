@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{9C598B71-0FCF-4529-AF6D-2A9F0C52E958}</ProjectGuid>
+    <ProjectGuid>{C2D15CEC-4565-41A6-92BA-738E470ED0DC}</ProjectGuid>
     <Keyword>AtlProj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -29,25 +29,29 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -96,11 +100,11 @@
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>database_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>database_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>database_p.c</ProxyFileName>
+      <HeaderFileName>databaseAtl_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>databaseAtl_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>databaseAtl_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)database.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)databaseAtl.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -111,8 +115,9 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\database.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\databaseAtl.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -127,11 +132,11 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>database_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>database_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>database_p.c</ProxyFileName>
+      <HeaderFileName>databaseAtl_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>databaseAtl_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>databaseAtl_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)database.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)databaseAtl.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -142,8 +147,9 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\database.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\databaseAtl.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,11 +165,11 @@
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>database_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>database_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>database_p.c</ProxyFileName>
+      <HeaderFileName>databaseAtl_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>databaseAtl_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>databaseAtl_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)database.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)databaseAtl.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -174,10 +180,11 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\database.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\databaseAtl.def</ModuleDefinitionFile>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -192,11 +199,11 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>database_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>database_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>database_p.c</ProxyFileName>
+      <HeaderFileName>databaseAtl_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>databaseAtl_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>databaseAtl_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)database.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)databaseAtl.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -207,14 +214,17 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\database.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\databaseAtl.def</ModuleDefinitionFile>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="database_i.h" />
+    <ClInclude Include="database.h" />
+    <ClInclude Include="databaseAtl_i.h" />
+    <ClInclude Include="db.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -223,7 +233,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="database.cpp" />
-    <ClCompile Include="database_i.c">
+    <ClCompile Include="databaseAtl.cpp" />
+    <ClCompile Include="databaseAtl_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -237,6 +248,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="db.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -259,14 +271,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="database.rc" />
+    <ResourceCompile Include="databaseAtl.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="database.def" />
-    <None Include="database.rgs" />
+    <None Include="databaseAtl.def" />
+    <None Include="databaseAtl.rgs" />
+    <None Include="db.rgs" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="database.idl" />
+    <Midl Include="databaseAtl.idl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

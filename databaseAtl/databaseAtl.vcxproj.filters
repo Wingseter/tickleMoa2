@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="생성 파일">
-      <UniqueIdentifier>{411a61ca-bc7a-45cc-8e91-2870af21b8d8}</UniqueIdentifier>
+      <UniqueIdentifier>{b2634e78-00d5-42c3-917d-c21f45fb3f37}</UniqueIdentifier>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
@@ -31,42 +31,57 @@
     <ClInclude Include="dllmain.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="database_i.h">
+    <ClInclude Include="databaseAtl_i.h">
       <Filter>생성 파일</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="db.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="database.cpp">
+    <ClCompile Include="databaseAtl.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="database_i.c">
+    <ClCompile Include="databaseAtl_i.c">
       <Filter>생성 파일</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="db.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="database.rc">
+    <ResourceCompile Include="databaseAtl.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="database.rgs">
+    <None Include="databaseAtl.rgs">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="database.def">
+    <None Include="databaseAtl.def">
       <Filter>소스 파일</Filter>
+    </None>
+    <None Include="db.rgs">
+      <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="database.idl">
+    <Midl Include="databaseAtl.idl">
       <Filter>소스 파일</Filter>
     </Midl>
   </ItemGroup>

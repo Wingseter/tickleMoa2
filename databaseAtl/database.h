@@ -24,9 +24,9 @@ public:
 	// 다음 결과
 	BOOL nextObj();
 	// 결과 문자열로 가져오기
-	LPSTR getResultString();
+	LPCSTR getResultString();
 	// 특정 결과 가져오기
-	LPSTR getResult(INT nSubItem);
+	LPCSTR getResult(INT nSubItem);
 
 	// 결과 비우기
 	void clearResult();

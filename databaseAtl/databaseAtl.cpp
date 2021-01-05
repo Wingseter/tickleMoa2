@@ -1,10 +1,10 @@
-﻿// database.cpp : DLL 내보내기 구현입니다.
+﻿// databaseAtl.cpp : DLL 내보내기 구현입니다.
 
 
 #include "pch.h"
 #include "framework.h"
 #include "resource.h"
-#include "database_i.h"
+#include "databaseAtl_i.h"
 #include "dllmain.h"
 
 
@@ -14,7 +14,8 @@ using namespace ATL;
 _Use_decl_annotations_
 STDAPI DllCanUnloadNow(void)
 {
-	return _AtlModule.DllCanUnloadNow();
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+	return (AfxDllCanUnloadNow()==S_OK && _AtlModule.GetLockCount()==0) ? S_OK : S_FALSE;
 }
 
 // 클래스 팩터리를 반환하여 요청된 형식의 개체를 만듭니다.

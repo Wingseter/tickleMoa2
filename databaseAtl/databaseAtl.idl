@@ -1,0 +1,36 @@
+﻿// databaseAtl.idl: databaseAtl의 IDL 소스
+//
+
+// 이 파일은 MIDL 도구에 의해 처리되어
+// 형식 라이브러리(databaseAtl.tlb) 및 마샬링 코드를 생성합니다.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(d175b5c6-7786-4e5a-891e-3cfb79bb468b),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface Idb : IDispatch
+{
+};
+[
+	uuid(47981f8f-7a46-4b6c-a396-baccf44802ac),
+	version(1.0),
+]
+library databaseAtlLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(012c2d32-e34c-4adf-8295-5c67ede063dc)
+	]
+	coclass db
+	{
+		[default] interface Idb;
+	};
+};
+
+import "shobjidl.idl";

@@ -1,41 +1,38 @@
 ﻿Imports System.Runtime.InteropServices
 
-'extern "C" __declspec(dllexport)
-'INT __stdcall plus(INT a, INT b) {
-'	Return a + b;
-'}
-
-'extern "C" __declspec(dllexport) void __cdecl strReturn(LPSTR str) {
-'	MessageBox(NULL, str, "test", MB_OK);
-'}
-
-'extern "C" __declspec(dllexport) BSTR __cdecl sprint(LPSTR str1, LPSTR str2) {
-'	//TCHAR test[100];
-'	//sprintf_s(test, 100, "%s %s", str1, str2);
-
-'	//LPCSTR test2 = "helloworld";
-'	BSTR test3 = SysAllocString(L"helloworld");
-'	Return test3;
-'}
-
-
 Class MainWindow
+    '' 데이터 베이스 생성
     <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
     Public Shared Function CreateDatabase() As IntPtr
     End Function
-
-    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
-    Public Shared Function connectDB(objptr As IntPtr, server As String, db As String, id As String, pw As String) As Boolean
-    End Function
-
+    '' 데이터 베이스 제거
     <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
     Public Shared Function DeleteDatabase(objptr As IntPtr)
     End Function
-
-
-    '<DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
-    'Private Shared Function sprint(ByVal str1 As String, ByVal str2 As String) As <MarshalAs(UnmanagedType.LPStr)> String
-    'End Function
+    '' DB 연결
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Function connectDB(objptr As IntPtr, server As String, db As String, id As String, pw As String) As Boolean
+    End Function
+    '' Query 실행
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Function execQuery(objptr As IntPtr, query As String, opt As Integer) As Boolean
+    End Function
+    '' 실행 결과 다음 row로 이동
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Function nextObj(objptr As IntPtr) As Boolean
+    End Function
+    '' 해당 row 결과 모두 전송
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Function getResultString(objptr As IntPtr) As <MarshalAs(UnmanagedType.LPStr)> String
+    End Function
+    '' 해당 row 결과 선택된 col 전송
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Function getResult(objptr As IntPtr, nSubItem As Integer) As <MarshalAs(UnmanagedType.LPStr)> String
+    End Function
+    '' 결과 초기화
+    <DllImport("C:\Users\wings\source\repos\tickleMoa2\Debug\database.dll", CallingConvention:=CallingConvention.Cdecl)>
+    Public Shared Sub clearResult(objptr As IntPtr)
+    End Sub
 
     Private retVal As Boolean
     Private dbPtr As IntPtr
@@ -58,6 +55,8 @@ Class MainWindow
             Close()
         End If
 
+        ' 전체 데이터 불러오기
+        refresh()
     End Sub
 
     '' 소멸자
@@ -66,17 +65,57 @@ Class MainWindow
         DeleteDatabase(dbPtr)
     End Sub
 
+
+    '' 전체 데이터로 새로 고침
+    Private Sub refresh()
+        ' 전체 목록 비우기
+        clear()
+
+        ' 전체 목록 불러오기
+        retVal = execQuery(dbPtr, "SELECT * FROM Spends", 1)
+
+        ' 목록 불러오기 실패하면 종료
+        If retVal = False Then
+            Close()
+        End If
+
+        ' 목록 업데이트 
+        update()
+    End Sub
+
+    '' 테이블 비우기
+    Private Sub clear()
+        ' db 결과 버퍼 비우기
+        clearResult(dbPtr)
+
+        ' 전체 삭제
+        gridUsage.Items.Clear()
+
+    End Sub
+
+    '' 목록 내용 업데이트
+    Private Sub update()
+        While nextObj(dbPtr)
+            Dim test As String = getResultString(dbPtr)
+            Dim usage As String = getResult(dbPtr, 0)
+            Dim money As String = getResult(dbPtr, 1)
+            Dim useDate As String = getResult(dbPtr, 2)
+            Dim item = New UseInfo With {.Usage = usage, .Money = money, .UseDate = useDate}
+            gridUsage.Items.Add(item)
+        End While
+    End Sub
+
     Private Sub On_Submit_Btn_Clk(sender As Object, e As RoutedEventArgs)
         Dim usage As String
         Dim money As String
-        Dim useDate As String
+
+        'execQuery(dbPtr, "SELECT * FROM Spends", 1)
 
         usage = inputUsage.Text
         money = inputMoney.Text
-        useDate = "2010.11.10"
 
-        Dim item = New UseInfo With {.Usage = usage, .Money = money, .UseDate = useDate}
-        gridUsage.Items.Add(item)
+        Dim query As String = String.Format("EXEC dbo.input_new_user '{0}','{1}'", usage, money)
+        refresh()
     End Sub
 End Class
 
