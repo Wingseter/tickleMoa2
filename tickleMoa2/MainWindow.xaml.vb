@@ -38,7 +38,7 @@ Class MainWindow
     Private retVal As Boolean
     Public Sub New()
 
-        '' 디자이너에서 이 호출이 필요합니다. 그렇군요!
+        ' 디자이너에서 이 호출이 필요합니다. 그렇군요!
         InitializeComponent()
 
         '' DB 생성

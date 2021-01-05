@@ -92,7 +92,7 @@ BOOL dataBase::connectDB(LPSTR server, LPSTR db, LPSTR id, LPSTR pw)
 {
 	TCHAR connectSQL[150];
 
-	sprintf_s(connectSQL, 150, TEXT("DR11IVER={SQL Server};SERVER=%s, 1433;DATABASE=%s;UID=%s;PWD=%s;"), server, db, id, pw);
+	sprintf_s(connectSQL, 150, TEXT("DRIVER={SQL Server};SERVER=%s, 1433;DATABASE=%s;UID=%s;PWD=%s;"), server, db, id, pw);
 	// 연결 시도
 	switch (SQLDriverConnect(sqlConnHandle,
 		NULL,
