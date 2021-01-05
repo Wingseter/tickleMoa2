@@ -1,0 +1,26 @@
+HKCR
+{
+	database.myDB.1 = s 'myDB class'
+	{
+		CLSID = s '{920d4a56-0399-42ca-b0a1-d47e43eba9af}'
+	}
+	database.myDB = s 'myDB class'
+	{		
+		CurVer = s 'database.myDB.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {920d4a56-0399-42ca-b0a1-d47e43eba9af} = s 'myDB class'
+		{
+			ProgID = s 'database.myDB.1'
+			VersionIndependentProgID = s 'database.myDB'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{962ce875-0c26-41cb-8f6b-424a0dabbc0c}'
+			Version = s '1.0'
+		}
+	}
+}

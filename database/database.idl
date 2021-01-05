@@ -8,11 +8,36 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 [
+	object,
+	uuid(9caf3c19-119b-4940-86ef-92e4248e4cdd),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ImyDB : IDispatch
+{
+	[id(1), helpstring("execute SQL query")] HRESULT execQuery([in] BSTR query, [in] LONG option, [out, retval] VARIANT_BOOL* retval);
+	[id(2), helpstring("select the next row")] HRESULT nextObj([out, retval] VARIANT_BOOL* retval);
+	[id(3), helpstring("return all data in row")] HRESULT getResultString([out, retval] BSTR* retval);
+	[id(4), helpstring("return row data in n column")] HRESULT getResult([in] LONG nSubItem, [out, retval] BSTR* retval);
+	[id(5), helpstring("clear all result info")] HRESULT clearResult();
+	[id(6), helpstring("connect to db")] HRESULT connectDB([in] BSTR server, [in] BSTR db, [in] BSTR id, [in] BSTR pw, [out, retval] VARIANT_BOOL* retval);
+	[id(7), helpstring("exit database")] HRESULT exitDB();
+};
+[
 	uuid(962ce875-0c26-41cb-8f6b-424a0dabbc0c),
 	version(1.0),
 ]
 library databaseLib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(920d4a56-0399-42ca-b0a1-d47e43eba9af)
+	]
+	coclass myDB
+	{
+		[default] interface ImyDB;
+	};
 };
 
+import "shobjidl.idl";
