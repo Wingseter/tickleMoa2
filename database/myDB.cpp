@@ -14,14 +14,18 @@ STDMETHODIMP CmyDB::execQuery(BSTR query, LONG option, VARIANT_BOOL* retval)
 	memset(values, 0, sizeof(values));
 	memset(ids, -1, sizeof(ids));
 
-	if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_STMT, sqlConnHandle, &sqlStmtHandle))
+	if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_STMT, sqlConnHandle, &sqlStmtHandle)) {
 		*retval = false;
+		return S_OK;
+	}
 
 	// Query 실행 프로시저 사용
 	USES_CONVERSION;
 	if (SQL_SUCCESS != SQLExecDirect(sqlStmtHandle, (SQLCHAR*)OLE2A(query), SQL_NTS)) {
 		// 오류 발생시 종료	
 		*retval = false;
+		return S_OK;
+
 	}
 	// option이 1일 경우
 	if (option == 1) {
@@ -31,10 +35,11 @@ STDMETHODIMP CmyDB::execQuery(BSTR query, LONG option, VARIANT_BOOL* retval)
 		}
 
 		*retval = true;
+		return S_OK;
+
 	}
 	// option이 0일 경우
 	*retval = true;
-
     return S_OK;
 }
 

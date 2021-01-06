@@ -80,7 +80,11 @@ Class MainWindow
         usage = inputUsage.Text
         money = inputMoney.Text
 
-        Dim query As String = String.Format("EXEC dbo.input_new_user '{0}','{1}'", usage, money)
+        Dim query As String = String.Format("EXEC dbo.input_new_spend '{0}','{1}'", usage, money)
+        retVal = dbPtr.execQuery(query, 0)
+        If retVal = False Then
+            Close()
+        End If
         refresh()
     End Sub
 End Class
