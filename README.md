@@ -6,6 +6,6 @@ Atl을 사용해 c++로 dll을 만들어 MSSQL 데이터 베이스를 사용하�
 사용자의 가계부를 작성하는 프로그램 입니다.
 
 ## 사용한것
-ATL (c++)
-WPF (VB.net)
-MSSQL
+* ATL (c++)
+* WPF (VB.net)
+* MSSQL
