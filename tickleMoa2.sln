@@ -10,13 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "databaseAtl", "databaseAtl\databaseAtl.vcxproj", "{C2D15CEC-4565-41A6-92BA-738E470ED0DC}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "databaseAtlPS", "databaseAtlPS\databaseAtlPS.vcxproj", "{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC} = {C2D15CEC-4565-41A6-92BA-738E470ED0DC}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "database", "database\database.vcxproj", "{9C598B71-0FCF-4529-AF6D-2A9F0C52E958}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "databasePS", "databasePS\databasePS.vcxproj", "{E491E6AD-FA1B-4E73-932E-CE13C3EF7133}"
@@ -46,22 +39,6 @@ Global
 		{C1B70917-996C-4AFB-8E78-73834293748B}.Release|x64.Build.0 = Release|Any CPU
 		{C1B70917-996C-4AFB-8E78-73834293748B}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1B70917-996C-4AFB-8E78-73834293748B}.Release|x86.Build.0 = Release|Any CPU
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Debug|x64.ActiveCfg = Debug|x64
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Debug|x64.Build.0 = Debug|x64
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Debug|x86.ActiveCfg = Debug|Win32
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Debug|x86.Build.0 = Debug|Win32
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Release|Any CPU.ActiveCfg = Release|Win32
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Release|x64.ActiveCfg = Release|x64
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Release|x64.Build.0 = Release|x64
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Release|x86.ActiveCfg = Release|Win32
-		{C2D15CEC-4565-41A6-92BA-738E470ED0DC}.Release|x86.Build.0 = Release|Win32
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Debug|x64.ActiveCfg = Debug|x64
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Debug|x86.ActiveCfg = Debug|Win32
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Release|Any CPU.ActiveCfg = Release|Win32
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Release|x64.ActiveCfg = Release|x64
-		{9D75FACF-29EA-4FA5-8ECC-497B055CC1FB}.Release|x86.ActiveCfg = Release|Win32
 		{9C598B71-0FCF-4529-AF6D-2A9F0C52E958}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{9C598B71-0FCF-4529-AF6D-2A9F0C52E958}.Debug|x64.ActiveCfg = Debug|x64
 		{9C598B71-0FCF-4529-AF6D-2A9F0C52E958}.Debug|x64.Build.0 = Debug|x64

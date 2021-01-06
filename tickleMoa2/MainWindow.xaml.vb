@@ -1,9 +1,10 @@
 ﻿Imports System.Runtime.InteropServices
 
 Class MainWindow
+    '' 에러 변수
     Private retVal As Boolean
-    Private dbPtr As databaseLib.myDB
     '' DB 생성
+    Private dbPtr As databaseLib.myDB
 
     '' 생성자
     Public Sub New()
@@ -29,6 +30,7 @@ Class MainWindow
     '' 소멸자
     Protected Overrides Sub Finalize()
         ' DB 삭제
+        dbPtr.exitDB()
     End Sub
 
 
@@ -61,8 +63,11 @@ Class MainWindow
 
     '' 목록 내용 업데이트
     Private Sub update()
+        ' 사용 내역
         Dim usage As String
+        ' 사용 금액
         Dim money As String
+        ' 사용 시간
         Dim useDate As String
         While dbPtr.nextObj()
             usage = dbPtr.getResult(1)
@@ -77,9 +82,26 @@ Class MainWindow
         Dim usage As String
         Dim money As String
 
+        ' 사용자 입력 가져오기
         usage = inputUsage.Text
         money = inputMoney.Text
 
+        ' 사용 내역 공백
+        If usage = "" Then
+            MessageBox.Show("사용 내역을 입력하세요")
+            ' 사용 금액 공백
+        ElseIf money = "" Then
+            MessageBox.Show("사용 금액을 입력하세요")
+        End If
+
+        ' 출금은 -(마이너스) 로 설정
+        If radioInput.IsChecked = True Then
+            money = money
+        Else
+            money = -money
+        End If
+
+        ' 입력 query 실행
         Dim query As String = String.Format("EXEC dbo.input_new_spend '{0}','{1}'", usage, money)
         retVal = dbPtr.execQuery(query, 0)
         If retVal = False Then
